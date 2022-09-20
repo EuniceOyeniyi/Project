@@ -1,8 +1,8 @@
 {
-    "interactions": [
+    "interaction": [
         {
             "tag": "greetings",
-            "patterns":[
+            "pattern":[
                 "Hi",
                 "Hello",
                 "Hey",
@@ -25,11 +25,5 @@
 
 
         }
-
-
-
-
-
-
     ]
 }
