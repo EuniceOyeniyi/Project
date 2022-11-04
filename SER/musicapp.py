@@ -80,6 +80,11 @@ def replay_song():
 def subtitle():
     driver.find_element(By.CLASS_NAME, "ytp-subtitles-button").click()
 
+def shut_down():
+    Speak('ByeBye')
+    driver.quit()
+
+
 
 
 
