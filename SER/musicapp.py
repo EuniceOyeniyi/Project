@@ -27,6 +27,18 @@ def Speak(text):
     engine.runAndWait()
 
 
+def getaudio():
+    with sr.Microphone() as source:
+        recognizer.adjust_for_ambient_noise(source)
+        audio2 = recognizer.listen(source)
+    try: 
+        s = recognizer.recognize_google(audio2,language="en").lower()
+        print(s)
+        
+    except:
+        Speak("I don't seems to get that!")
+
+
 def play_song(song_or_video):
     search_box=driver.find_element(By.NAME, "search_query")
     search_box.click()
@@ -38,6 +50,16 @@ def play_song(song_or_video):
     videos = [i for i in video if i.is_displayed()]
     videos[0].click()
 
+def full_screen():
+    screen_button = driver.find_element(By.CLASS_NAME ,'ytp-fullscreen-button' )
+    screen_button.click()
+
+def skip_ad():
+        try:
+            driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").click()
+            # return driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text
+        except:
+            return None
 
 
 
