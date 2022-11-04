@@ -69,6 +69,17 @@ def next_song():
     next_button = driver.find_element(By.CLASS_NAME ,'ytp-next-button' )
     next_button.click()
 
+def replay_song():
+    button=driver.find_element(By.CLASS_NAME,'ytp-play-button')
+    check_end=button.get_attribute('title')
+    check_end=check_end.lower()
+    print(check_end)
+    if(check_end=='replay'):
+        button.click()
+
+def subtitle():
+    driver.find_element(By.CLASS_NAME, "ytp-subtitles-button").click()
+
 
 
 
