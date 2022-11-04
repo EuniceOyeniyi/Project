@@ -61,6 +61,13 @@ def skip_ad():
         except:
             return None
 
+def stop_song():
+    button = driver.find_element(By.CLASS_NAME ,'ytp-play-button' )
+    button.click()
+
+def next_song():
+    next_button = driver.find_element(By.CLASS_NAME ,'ytp-next-button' )
+    next_button.click()
 
 
 
