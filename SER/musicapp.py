@@ -1,3 +1,4 @@
+from click import command
 import pyttsx3 as pt
 import speech_recognition as sr
 import pywhatkit
@@ -16,7 +17,7 @@ import sys
 os.system("cls")  #Clearing the screen
 
 
-recognizer = sr.Recognizer()
+
 
 def Speak(text):
     # Initialize the engine
@@ -28,15 +29,23 @@ def Speak(text):
 
 
 def getaudio():
+    recognizer = sr.Recognizer()
     with sr.Microphone() as source:
+        # recognizer.energy_threshold=10000
         recognizer.adjust_for_ambient_noise(source)
-        audio2 = recognizer.listen(source)
-    try: 
-        s = recognizer.recognize_google(audio2,language="en").lower()
-        print(s)
+        recognizer.dynamic_energy_threshold = True  
+        audio2 = recognizer.listen(source) 
+        try:
+            s = recognizer.recognize_google(audio2,language="en")
+            s=s.lower()
+            return s
+        except:
+            # print("I don't seems to get that")
+            pass
+
+    
         
-    except:
-        Speak("I don't seems to get that!")
+
 
 
 def play_song(song_or_video):
@@ -47,23 +56,38 @@ def play_song(song_or_video):
     search_box.send_keys(Keys.ENTER)
     time.sleep(5)
     video = driver.find_elements(By.ID, 'thumbnail')
-    videos = [i for i in video if i.is_displayed()]
-    videos[0].click()
+    try:
+        checker = driver.find_element(By.XPATH, "/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-search-pyv-renderer/div/ytd-promoted-video-renderer/div/div[1]/a/div/div[2]/div/ytd-badge-supported-renderer/div/span").text
+    
+        
+        if checker == "Ad":
+            videos = [i for i in video if i.is_displayed()]
+
+            videos[1].click()
+        
+            
+    except:
+        videos = [i for i in video if i.is_displayed()]
+        videos[0].click()
+
+    
 
 def full_screen():
     screen_button = driver.find_element(By.CLASS_NAME ,'ytp-fullscreen-button' )
     screen_button.click()
 
 def skip_ad():
-        try:
-            driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").click()
-            # return driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text
-        except:
-            return None
+            skipping =driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button")
+            skipping.click()
+        
 
-def stop_song():
+def pause_song():
     button = driver.find_element(By.CLASS_NAME ,'ytp-play-button' )
     button.click()
+
+def continue_song():
+    cont_button = driver.find_element(By.CLASS_NAME ,'ytp-play-button' )
+    cont_button.click()
 
 def next_song():
     next_button = driver.find_element(By.CLASS_NAME ,'ytp-next-button' )
@@ -91,14 +115,61 @@ def shut_down():
 
 
 
-pth = Service("../chromedriver.exe")
-options = webdriver.ChromeOptions()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(service=pth,options=options)
-driver.get('https://www.youtube.com/')
-time.sleep(5)
+# pth = Service("../chromedriver.exe")
+# options = webdriver.ChromeOptions()
+# options.add_experimental_option('excludeSwitches', ['enable-logging'])
+# driver = webdriver.Chrome(service=pth,options=options)
+# driver.get('https://www.youtube.com/')
+# button = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, "/html/body/ytd-app/ytd-consent-bump-v2-lightbox/tp-yt-paper-dialog/div[4]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")) )
+# button.click()
 
-button = driver.find_element(By.XPATH, "/html/body/ytd-app/ytd-consent-bump-v2-lightbox/tp-yt-paper-dialog/div[4]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")
-button.click()
-time.sleep(5)
-play_song('calm songs')
+
+
+# Wake = 'hello'
+
+while True:
+    commands = getaudio()
+    # commands = 'play sinach songs'
+    
+    # if commands.count(Wake)>0:
+    if commands == 'hello':
+        Speak("I'm listening")
+        commands = getaudio()
+
+
+  
+        if 'play' in commands:
+            # os.remove('../SER/femi.wav')
+            to_do = commands.split('play')[1]
+            print(to_do)
+            pth = Service("../chromedriver.exe")
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option('excludeSwitches', ['enable-logging'])
+            driver = webdriver.Chrome(service=pth,options=options)
+            driver.get('https://www.youtube.com/')
+            button = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, "/html/body/ytd-app/ytd-consent-bump-v2-lightbox/tp-yt-paper-dialog/div[4]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")) )
+            button.click()
+            time.sleep(4)
+                    
+            play_song(to_do)
+        
+        # if driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text == 'Skip Ad':
+        #     skip_ad()
+        
+        elif commands == 'stop':
+            pause_song()
+        elif commands == 'continue':
+            pause_song()
+        elif commands == 'skip':
+            skip_ad()
+        elif commands == 'next':
+            next_song()
+        elif commands == 'subtitle':
+            subtitle()
+        elif commands == 'shutdown':
+            shut_down()
+
+       
+
+
+
