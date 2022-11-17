@@ -1,9 +1,7 @@
-from click import command
 import pyttsx3 as pt
 import speech_recognition as sr
-import pywhatkit
 import time
-import datetime
+
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -110,23 +108,6 @@ def shut_down():
 
 
 
-
-
-
-
-
-# pth = Service("../chromedriver.exe")
-# options = webdriver.ChromeOptions()
-# options.add_experimental_option('excludeSwitches', ['enable-logging'])
-# driver = webdriver.Chrome(service=pth,options=options)
-# driver.get('https://www.youtube.com/')
-# button = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, "/html/body/ytd-app/ytd-consent-bump-v2-lightbox/tp-yt-paper-dialog/div[4]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button/yt-touch-feedback-shape/div/div[2]")) )
-# button.click()
-
-
-
-# Wake = 'hello'
-
 while True:
     commands = getaudio()
     # commands = 'play sinach songs'
@@ -152,9 +133,14 @@ while True:
             time.sleep(4)
                     
             play_song(to_do)
+            try:
+                skipper = driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text
+                if skipper == 'Skip_Ad':
+                    skipper.click()
+
+            except:
+                pass
         
-        # if driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text == 'Skip Ad':
-        #     skip_ad()
         
         elif commands == 'stop':
             pause_song()
