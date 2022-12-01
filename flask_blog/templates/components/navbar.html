@@ -1,0 +1,41 @@
+{% macro navbar() -%}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <!-- <span class="navbar-text   ">
+      Navbar text with an inline element
+    </span> -->
+    <a class="navbar-brand" href="#">Emotion music player/youtube voice control</a>
+    <div class="container-fluid">
+      
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav me-auto ms-5 mb-lg-0">
+      
+        <li class="nav-item ">
+          <a class="nav-link active " aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="project">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+{%- endmacro %}
