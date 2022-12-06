@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+import time
+from flask import Flask, render_template, request
+from musicapp import *
 
 
 app = Flask(__name__)
@@ -15,9 +17,16 @@ def about():
 def projects():
     return render_template('projects.html')
 
-@app.route("/demo")
+@app.route("/demo", methods=['GET', 'POST'])
 def demo():
-    return("Welcome\n Now")
+    if request.method == 'POST':
+        getaudio()
+        return render_template('demo.html')
+    else:
+        Speak('Thank you')
+        return render_template('demo.html')
+    
+    
     
 
 if __name__ == "__main__":
