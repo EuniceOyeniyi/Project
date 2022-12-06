@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Demo page{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center mt-4">
+    <h3>
+        Youtube voice assitance
+    </h3>
+</div>
+
+    <form action="/demo" method=POST>
+        
+        <div class="d-flex justify-content-center mt-4">
+
+            <!-- <a href="/about"> -->
+                <button type="submit" class="btn btn-light">
+                    <img src="\static\images\demo.png" class="img-circle" alt="Cinque Terre"> 
+                        
+                </button>
+            <!-- </a>   -->
+                        
+        </div>
+    </form>
+    
+
+{% endblock %}
