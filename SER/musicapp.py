@@ -31,19 +31,37 @@ def getaudio():
     with sr.Microphone() as source:
         # recognizer.energy_threshold=10000
         recognizer.adjust_for_ambient_noise(source)
+        # Speak("I'm listening")
         recognizer.dynamic_energy_threshold = True  
-        audio2 = recognizer.listen(source) 
+        audio2 = recognizer.listen(source)
+        
         try:
-            s = recognizer.recognize_google(audio2,language="en")
-            s=s.lower()
+            s = recognizer.recognize_google(audio2)
+            s = s.lower()
             return s
+            
         except:
-            # print("I don't seems to get that")
+            # Speak("I didn't get that, please try to speak more clearly")
             pass
 
-    
-        
 
+def getaudio2():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        # recognizer.energy_threshold=10000
+        recognizer.adjust_for_ambient_noise(source)
+        Speak("How may I help you")
+        recognizer.dynamic_energy_threshold = True  
+        audio2 = recognizer.listen(source)
+        
+        try:
+            s = recognizer.recognize_google(audio2)
+            s = s.lower()
+            return s
+            
+        except:
+            Speak("I didn't get that, please try to speak more clearly")
+            pass
 
 
 def play_song(song_or_video):
@@ -105,20 +123,21 @@ def subtitle():
 def shut_down():
     Speak('ByeBye')
     driver.quit()
+    sys.exit()
+
+
 
 
 
 while True:
     commands = getaudio()
-    # commands = 'play sinach songs'
-    
-    # if commands.count(Wake)>0:
+        
     if commands == 'hello':
-        Speak("I'm listening")
-        commands = getaudio()
-
-
-  
+        # Speak("How may I help you")
+        commands = getaudio2()
+        print(commands)
+        
+        
         if 'play' in commands:
             # os.remove('../SER/femi.wav')
             to_do = commands.split('play')[1]
@@ -133,16 +152,8 @@ while True:
             time.sleep(4)
                     
             play_song(to_do)
-            try:
-                skipper = driver.find_element(By.CLASS_NAME,"ytp-ad-skip-button").text
-                if skipper == 'Skip_Ad':
-                    skipper.click()
-
-            except:
-                pass
-        
-        
-        elif commands == 'stop':
+            
+        if commands == 'stop':
             pause_song()
         elif commands == 'continue':
             pause_song()
