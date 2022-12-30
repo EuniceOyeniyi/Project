@@ -28,3 +28,12 @@ def happy():
     happy_item = random.randrange(list_count)
     return happy_list[happy_item]
 
+
+def morning_song():
+    morning_list = ['classical ', 'blues','heavy metal',]
+    pass
+def afternoon_song():
+    afternoon_list = ['hip-hop','jazz music']
+    pass
+def evening_song():
+    pass
