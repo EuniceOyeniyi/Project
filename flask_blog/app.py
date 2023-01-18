@@ -20,10 +20,10 @@ def projects():
 @app.route("/demo", methods=['GET', 'POST'])
 def demo():
     if request.method == 'POST':
-        getaudio()
+        
+        control.get_commands()
         return render_template('demo.html')
-    else:
-        Speak('Thank you')
+    else:        
         return render_template('demo.html')
     
     
