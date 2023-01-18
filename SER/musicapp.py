@@ -135,9 +135,8 @@ while True:
     if commands == 'hello':
         # Speak("How may I help you")
         commands = getaudio2()
-        print(commands)
-        
-        
+        # print(commands)
+       
         if 'play' in commands:
             # os.remove('../SER/femi.wav')
             to_do = commands.split('play')[1]
