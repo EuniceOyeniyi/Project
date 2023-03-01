@@ -2,8 +2,145 @@
 {% block title %}About page{% endblock %}
 
 {% block content %}
-    <h1>About</h1>
-    <p class="important">
-      Projects.
-    </p>
+<div class="d-flex justify-content-center mt-4 align-items-center">
+  <!-- <div class="col-md-4" height="100vh">
+    <h3 class = "align-middle">About</h3>
+  </div> -->
+  <div >
+    <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card" style="max-width: 640px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="static\images\images.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">Emotion based Voice Assitance</h3>
+                  <p>
+                    <dl>
+                      <dt>Key Features:</dt>
+                      <ul>
+                        <p>
+                          <li>Plays music based emtional state predicted from voice</li>
+                        </p>
+                        <li>Automatically plays music base on time of the day</li>
+                        <ul>
+                          <li>Morning</li>
+                          <li>Afternoon</li>
+                          <li>Evening</li>
+                        </ul>
+                        <p>
+                          <li>Personal control of music or video choice</li>
+                        </p>
+                      </ul>
+                    </dl>
+                    
+                  </p>
+                  <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card" style="max-width: 640px;">
+            <div class="row g-0">
+              <div class="col-md-4" height="350px">
+                <img src="static\images\images.png" class="img-fluid rounded-start" alt="..." >
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">Project Motivation</h3>
+                  <p class="card-text">The project idea was triggered from my personal need as a first time mum.</p>
+                  <p class="card-text">It's a new phase of life filled with different emotional state, some days are overwhelming, exhausting, exciting, stressful and painful.</p>
+                  <!-- <p class="card-text"><small class="text-muted">Why music?</small></p>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card" style="max-width: 640px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="static\images\images.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">Why</h3>
+                  <div>
+                    <ul>
+                      <li>Music can accommodate every kind of mood you can possibly have.</li>
+                      <li> It also has the power to heal your mental and emotional state. </li>
+                      <li>It's a convient way to entertain or get yourself relaxed without typing or using a remote control </li>
+                    
+                     <ul>
+                        <li> Stop</li>
+                        <li> Continue</li>
+                        <li> Skip ad</li>
+                        <li> Full screen</li>
+                        <li> Next</li>
+                        <li> Subtitle</li>
+                        <li> Shut down</li>
+                      </ul>
+                    </ul>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card" style="max-width: 640px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="static\images\images.png" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">Voice Commands</h3>
+                  <div>
+                    <ul>
+                      <li>"Play me a song" to play music base on current emtional state</li>
+                      <li>Play + "whatever you wish to play on youtube"</li>
+                      <li>General control</li>
+                      <ul>
+                        <li> Stop</li>
+                        <li> Continue</li>
+                        <li> Skip ad</li>
+                        <li> Full screen</li>
+                        <li> Next</li>
+                        <li> Subtitle</li>
+                        <li> Shut down</li>
+                      </ul>
+                    </ul>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+    
 {% endblock %}
